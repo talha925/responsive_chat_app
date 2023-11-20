@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_chat_app/const/const.dart';
 
-class MyChatTextField extends StatelessWidget {
+class MyChatTextField extends StatefulWidget {
+  final void Function()? onTap;
+  final TextEditingController controller;
   const MyChatTextField({
     super.key,
+    this.onTap,
+    required this.controller,
   });
 
+  @override
+  State<MyChatTextField> createState() => _MyChatTextFieldState();
+}
+
+class _MyChatTextFieldState extends State<MyChatTextField> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -28,28 +38,41 @@ class MyChatTextField extends StatelessWidget {
                     ),
                     child: Row(
                       children: <Widget>[
-                        const Expanded(
+                        Expanded(
                           child: TextField(
+                            style: TextStyle(
+                                color: textColor), // Set the text color here
+                            controller: widget.controller,
                             decoration: InputDecoration(
-                              hintText: 'Type your message...',
+                              hintText: 'Type your message... ',
+                              hintStyle: TextStyle(color: textColor),
                               border: InputBorder.none,
                             ),
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.attach_file),
+                          icon: Icon(
+                            Icons.attach_file,
+                            color: textColor,
+                          ),
                           onPressed: () {
                             // Handle file attachment
                           },
                         ),
                         IconButton(
-                          icon: const Icon(Icons.camera_alt),
+                          icon: Icon(
+                            Icons.camera_alt,
+                            color: textColor,
+                          ),
                           onPressed: () {
                             // Handle camera action
                           },
                         ),
                         IconButton(
-                          icon: const Icon(Icons.emoji_emotions),
+                          icon: Icon(
+                            Icons.emoji_emotions,
+                            color: textColor,
+                          ),
                           onPressed: () {
                             // Handle emoji selection
                           },
@@ -60,11 +83,14 @@ class MyChatTextField extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.send),
-                onPressed: () {
-                  // Handle send button action
-                },
-              ),
+                  icon: Icon(
+                    Icons.send,
+                    color: textColor,
+                  ),
+                  onPressed: () {
+                    widget.onTap
+                        ?.call(); // Use widget.onTap to reference the onTap function
+                  }),
             ],
           ),
         ],

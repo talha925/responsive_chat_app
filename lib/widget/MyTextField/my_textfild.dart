@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
-  const MyTextField({
-    super.key,
-  });
+  final TextEditingController? controller;
+  const MyTextField({this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +15,9 @@ class MyTextField extends StatelessWidget {
           color: Colors.white, // White background color
           borderRadius: BorderRadius.circular(12.0), // Circular border radius
         ),
-        child: const TextField(
-          decoration: InputDecoration(
+        child: TextField(
+          controller: controller,
+          decoration: const InputDecoration(
             hintText: 'Search here',
             border: InputBorder.none, // Hide the default border
             prefixIcon: Icon(Icons.search),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_chat_app/utils/my_chat_textfild.dart';
+import 'package:responsive_chat_app/apps/desktop/view_Screen/drawer.dart';
 
 import '../const/const.dart';
 
@@ -11,11 +11,11 @@ class TabletScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: myDefaultBAckground,
       appBar: myAppBar,
-      drawer: myDrawer,
+      drawer: const MyDrawer(),
       body: const Column(
         children: [
           // Chat Interface (TExt field send button)
-          MyChatTextField(),
+          // MyChatTextField(),
 
           //tile below it
 
